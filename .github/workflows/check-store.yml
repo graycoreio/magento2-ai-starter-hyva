@@ -9,7 +9,7 @@ on:
 
 jobs:
   check-store:
-    uses: graycoreio/github-actions-magento2/.github/workflows/check-store.yaml@v8.4.0
+    uses: graycoreio/github-actions-magento2/.github/workflows/check-store.yaml@v8.5.0
     with:
       path: "."
     secrets:
