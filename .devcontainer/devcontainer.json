@@ -1,0 +1,67 @@
+{
+  "name": "magento2-ai-starter-hyva",
+  "dockerComposeFile": [
+    "docker-compose.yml",
+    "magento2-devcontainer/compose/magento/2.4.9/docker-compose.yml",
+    "docker-compose.shared.yml",
+    "docker-compose.local.yml"
+  ],
+  "workspaceFolder": "/workspace",
+  "service": "php",
+  "forwardPorts": [
+    8000,
+    8025
+  ],
+  "initializeCommand": "[ -f .devcontainer/magento2-devcontainer/.gitignore ] || git submodule update --init --recursive; .devcontainer/magento2-devcontainer/bin/host-bootstrap.sh",
+  "updateContentCommand": ".devcontainer/magento2-devcontainer/bin/lifecycle/update-content.sh",
+  "postCreateCommand": ".devcontainer/magento2-devcontainer/bin/lifecycle/post-create.sh",
+  "postStartCommand": ".devcontainer/magento2-devcontainer/bin/forward-ports.sh",
+  "portsAttributes": {
+    "8000": {
+      "label": "Magento 2 Storefront (nginx)"
+    },
+    "3306": {
+      "label": "MySQL/MariaDB"
+    },
+    "9200": {
+      "label": "OpenSearch"
+    },
+    "5672": {
+      "label": "RabbitMQ"
+    },
+    "6379": {
+      "label": "Redis/Valkey"
+    },
+    "8025": {
+      "label": "Mailpit"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "remoteUser": "dev",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "installYarnUsingApt": false
+    },
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "moby": false
+    },
+    "ghcr.io/devcontainers-extra/features/npm-package:1": {
+      "package": "@mappia/speedscope"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb"
+  }
+}
