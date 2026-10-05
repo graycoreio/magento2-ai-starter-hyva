@@ -1,0 +1,4 @@
+# Local, per-developer devcontainer files — seeded from samples by
+# bin/host-bootstrap.sh on container create, so they don't need to be committed.
+.env
+docker-compose.local.yml

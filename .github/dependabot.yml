@@ -1,0 +1,19 @@
+# Basic dependabot.yml — keeps GitHub Actions and composer dependencies fresh.
+# The mirror.mage-os.org repository is declared in composer.json's "repositories"
+# field (added by `composer create-project --repository-url=…`), so Dependabot
+# picks it up automatically — no explicit `registries:` entry needed.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Ignore test fixtures and update tool manifests that
+    # are not actually used in production
+    exclude-paths:
+      - "dev/tests/**"
+      - "update/**"
