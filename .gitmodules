@@ -1,0 +1,3 @@
+[submodule ".devcontainer/magento2-devcontainer"]
+	path = .devcontainer/magento2-devcontainer
+	url = https://github.com/graycoreio/magento2-devcontainer.git
